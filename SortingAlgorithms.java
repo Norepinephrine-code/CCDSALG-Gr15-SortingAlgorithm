@@ -135,12 +135,12 @@ public class SortingAlgorithms {
         }
         incrementStep(1); // condition check of the 'if' below
         if (low < high) {
-        incrementStep(1); // condition check of the 'if' below
-             if (pi == low || pi == high) return;
-             incrementStep(1); // data assignment
-            int pi = partition(arr, low, high);
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+
+            int pi = partition(arr, low, high); // DO NOT INCREMENT STEP COUNT HERE, its incremented in partition method
+            incrementStep(1); // condition check of the 'if' below
+            if (pi == low || pi == high) return;
+            quickSort(arr, low, pi - 1);        // SAME HERE. Do not count.
+            quickSort(arr, pi + 1, high);       // SAME HERE. Do not count.
         }
     }
 
