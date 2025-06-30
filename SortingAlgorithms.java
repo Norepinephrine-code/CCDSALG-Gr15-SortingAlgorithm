@@ -21,11 +21,11 @@ public class SortingAlgorithms {
     public void insertionSort(Record[] arr, int n) {
         resetStepCount();
         for (int i = 1; i < n; i++) {
-            incrementStep((n-1)-1+2); // for loop comparison
+            incrementStep(1); // for loop comparison
             Record key = arr[i];
-            incrementStep((n-1)-1+1); // key assignment
+            incrementStep(1); // key assignment
             int j = i - 1;
-            incrementStep((n-1)-1+1); // key assignment
+            incrementStep(1); // j assignment
             while (j >= 0 && arr[j].getIdNumber() > key.getIdNumber()) {
                 incrementStep(2); // j >= 0 + comparison
                 arr[j + 1] = arr[j];
@@ -33,6 +33,7 @@ public class SortingAlgorithms {
                 j--;
                 incrementStep(1); // j decrement
             }
+            incrementStep(1); // failed while comparison
             arr[j + 1] = key;
             incrementStep(1); // final assignment
         }
@@ -42,9 +43,9 @@ public class SortingAlgorithms {
     public void selectionSort(Record[] arr, int n) {
         resetStepCount();
         for (int i = 0; i < n - 1; i++) {
-            incrementStep(((n-1)-1)-1+2); // for loop comparison
+            incrementStep(1); // for loop comparison
             int minIdx = i;
-            incrementStep(((n-1)-1)-1+1); // assignment
+            incrementStep(1); // assignment
             for (int j = i + 1; j < n; j++) {
                 incrementStep(1); // inner loop comparison
                 incrementStep(1); // comparison between elements
@@ -62,7 +63,7 @@ public class SortingAlgorithms {
     }
 
     public void mergeSort(Record[] arr, int p, int r) {
-        incrementStep(1); // mergeSort comparison (if condition checking)
+        incrementStep(1); // mergeSort comparison
         if (p < r) {
             int q = (p + r) / 2;
             incrementStep(1); // midpoint calculation
@@ -81,14 +82,13 @@ public class SortingAlgorithms {
         Record[] R = new Record[n2];
         incrementStep(2); // array allocations
 
-        incrementStep((n1)-1+2); // for loop comparison
         for (int i = 0; i < n1; i++) {
+            incrementStep(1); // loop condition
             L[i] = arr[p + i];
-            incrementStep((1); // copying to L
+            incrementStep(1); // copying to L
         }
-        
-        incrementStep((n2)-0+2); // for loop comparison
         for (int j = 0; j < n2; j++) {
+            incrementStep(1); // loop condition
             R[j] = arr[q + 1 + j];
             incrementStep(1); // copying to R
         }
@@ -97,14 +97,14 @@ public class SortingAlgorithms {
         incrementStep(3); // variable initializations
 
         while (i < n1 && j < n2) {
-            incrementStep(2); // loop condition check
-            incrementStep(1); // comparison
+            incrementStep(2); // loop condition check. One for (i < n1), another one for (j < n2)
+            incrementStep(1); // comparison (if condition check below)
             if (L[i].getIdNumber() <= R[j].getIdNumber()) {
                 arr[k++] = L[i++];
             } else {
                 arr[k++] = R[j++];
             }
-            incrementStep(1); // data assignment
+            incrementStep(1); // data assignment above (since both only have one)
         }
 
         while (i < n1) {
@@ -121,7 +121,7 @@ public class SortingAlgorithms {
     }
 
     public void quickSort(Record[] arr, int low, int high) {
-        incrementStep(1); // condition check (the if check)
+        incrementStep(1); // condition check of the 'if' below
         if (low < high) {
             int pi = partition(arr, low, high);
             quickSort(arr, low, pi - 1);
@@ -135,9 +135,9 @@ public class SortingAlgorithms {
         int i = low - 1;
         incrementStep(1); // i initialization
 
-        incrementStep((high-1)-low+2); // for loop comparison
         for (int j = low; j < high; j++) {
-            incrementStep(1); // comparison
+            incrementStep(1); // loop condition
+            incrementStep(1); // comparison below
             if (arr[j].getIdNumber() <= pivot.getIdNumber()) {
                 i++;
                 incrementStep(1); // i increment
