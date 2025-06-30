@@ -1,6 +1,4 @@
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.Arrays;
+
 
 public class Main {
     
@@ -27,24 +25,28 @@ public class Main {
           * It needs a path so we will use "data/" + file_name[i] array to read the files.
           */
 
+          System.out.printf("\n=====================================================\n");
         for (String file : file_name) {                                     // This loop iterates through each file name in the file_name array
             
             Record[] original = new FileReader().readFile("data/"+file);    // Read the file
             Record[][] record_array = new Record[4][];                      // Store in a 2D array
                 for (int i = 0; i < 4; i++) {
                     record_array[i] = duplicateRecords(original);           // Duplicate so that they wont share the same reference
-                }
+                } 
             System.out.println("Sorting " + file + ":");                    // Print the file name
             benchMark(record_array[0],1);                                 // Insertion Sort
             benchMark(record_array[1],2);                                 // Selection Sort
             benchMark(record_array[2],3);                                 // Merge Sort
             benchMark(record_array[3],4);                                 // Quick Sort
+            System.out.printf("=====================================================\n");                   
         }
+}
 
-         /*
-          * This is just duplicating the records so that we can sort them
-          * without modifying the original array.
-          */
+
+  /*
+    * This is just duplicating the records so that we can sort them
+    * without modifying the original array.
+    */
 
     public static Record[] duplicateRecords (Record[] original) {
         Record[] duplicate = new Record[original.length];
@@ -64,26 +66,26 @@ public class Main {
 
         switch(n) {                                                      // Choose algorithm
         case 1:
-            sortingAlgorithms.insertionSort(records);
+            sortingAlgorithms.insertionSort(records, records.length);
             break;
         case 2:
-            sortingAlgorithms.selectionSort(records);
+            sortingAlgorithms.selectionSort(records, records.length);
             break;
-        case 3:
-            sortingAlgorithms.mergeSort(records, 0, records.length - 1);
+        case 3:                                         // This is records.length - 1 because they work by index                 
+            sortingAlgorithms.mergeSort(records, 0, records.length - 1);  
             break;
-        case 4: 
-            sortingAlgorithms.quickSort(records, 0, records.length - 1);
+        case 4:                                         // This is records.length - 1 because they work by index
+            sortingAlgorithms.quickSort(records, 0, records.length - 1);  
             break;
         }
         long endTime = System.currentTimeMillis();                       // End timer
         long duration = endTime - startTime;                             // Calculate duration
-        int stepCount = sortingAlgorithms.getStepCount();                // Get the step count
+        long stepCount = SortingAlgorithms.getStepCount();               // Get the step count
 
-        printResult(duration, stepCount, n); // Print the result
+        printResult(duration, stepCount, n);                             // Print the result
     }
 
-    public static void printResult(long duration, int stepCount, int algorithm) {
+    public static void printResult(long duration, long stepCount, int algorithm) {
         String algoName = "Error";                                        // Default value for error tracing
         switch(algorithm) {
             case 1: algoName = "Insertion Sort";    break;
@@ -94,7 +96,6 @@ public class Main {
         System.out.println(algoName + ": Duration = " + duration + " ms, Steps = " + stepCount);
    
     }
-
 }
 
 

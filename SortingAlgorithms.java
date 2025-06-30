@@ -4,9 +4,9 @@
 
 public class SortingAlgorithms {
 
-    private static int stepCount = 0;
+    private static long stepCount = 0;
 
-    public static int getStepCount() {
+    public static long getStepCount() {
         return stepCount;
     }
 
