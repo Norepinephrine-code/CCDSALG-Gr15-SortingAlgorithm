@@ -129,44 +129,24 @@ public class SortingAlgorithms {
         incrementStep(1); // final check for j < n2
     }
 
-    public void quickSort(Record[] arr, int low, int high) {
-        if (low == 0 && high == arr.length - 1) {
-            resetStepCount();
-        }
-        incrementStep(1); // condition check of the 'if' below
-        if (low < high) {
+    public void bubbleSort(Record[] arr, int n) {
+        resetStepCount(); // Reset step counter before starting
 
-            int pi = partition(arr, low, high); // DO NOT INCREMENT STEP COUNT HERE, its incremented in partition method
-            incrementStep(1); // condition check of the 'if' below
-            if (pi == low || pi == high) return;
-            quickSort(arr, low, pi - 1);        // SAME HERE. Do not count.
-            quickSort(arr, pi + 1, high);       // SAME HERE. Do not count.
-        }
-    }
-
-    private int partition(Record[] arr, int low, int high) {
-        Record pivot = arr[high];
-        incrementStep(1); // pivot assignment
-        int i = low - 1;
-        incrementStep(1); // i initialization
-
-        for (int j = low; j < high; j++) {
-            incrementStep(1); // loop condition
-            incrementStep(1); // comparison below
-            if (arr[j].getIdNumber() <= pivot.getIdNumber()) {
-                i++;
-                incrementStep(1); // i increment
-                Record temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                incrementStep(3); // swap operations
+        for (int i = 0; i < n - 1; i++) {
+            incrementStep(1); // outer loop condition
+            for (int j = 0; j < n - i - 1; j++) {
+                incrementStep(1); // inner loop condition
+                incrementStep(1); // comparison
+                if (arr[j].getIdNumber() > arr[j + 1].getIdNumber()) {
+                    // swap arr[j] and arr[j + 1]
+                    Record temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    incrementStep(3); // swap operations
+                }
             }
+            incrementStep(1); // inner loop final check
         }
-        incrementStep(1); // for loop final check
-        Record temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
-        incrementStep(3); // final swap
-        return i + 1;
+        incrementStep(1); // outer loop final check
     }
 }

@@ -75,8 +75,8 @@ public class Main {
         case 3:                                         // This is records.length - 1 because they work by index                 
             sortingAlgorithms.mergeSort(records, 0, records.length - 1);  
             break;
-        case 4:                                         // This is records.length - 1 because they work by index
-            sortingAlgorithms.quickSort(records, 0, records.length - 1);  
+        case 4:                                         
+            sortingAlgorithms.bubbleSort(records, records.length);
             break;
         }
         long endTime = System.currentTimeMillis();                       // End timer
@@ -104,7 +104,7 @@ public class Main {
             case 1: algoName = "Insertion Sort";    break;
             case 2: algoName = "Selection Sort";    break;
             case 3: algoName = "Merge Sort";        break;
-            case 4: algoName = "Quick Sort";        break;
+            case 4: algoName = "Bubble Sort";        break;
         }
         System.out.println((isSorted ? "YES \tThe records are sorted!" : "NO \tThe records are NOT sorted!"));
         System.out.printf("\t" + algoName + ": Duration = " + duration + " ms, Steps = " + stepCount + "\n");
