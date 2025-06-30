@@ -63,6 +63,9 @@ public class SortingAlgorithms {
     }
 
     public void mergeSort(Record[] arr, int p, int r) {
+        if (p == 0 && r == arr.length - 1) {
+            resetStepCount();
+        }
         incrementStep(1); // mergeSort comparison
         if (p < r) {
             int q = (p + r) / 2;
@@ -121,6 +124,9 @@ public class SortingAlgorithms {
     }
 
     public void quickSort(Record[] arr, int low, int high) {
+        if (low == 0 && high == arr.length - 1) {
+            resetStepCount();
+        }
         incrementStep(1); // condition check of the 'if' below
         if (low < high) {
             int pi = partition(arr, low, high);
