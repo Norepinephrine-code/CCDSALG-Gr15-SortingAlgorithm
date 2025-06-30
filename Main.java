@@ -25,7 +25,7 @@ public class Main {
           * It needs a path so we will use "data/" + file_name[i] array to read the files.
           */
 
-          System.out.printf("\n=====================================================\n");
+          System.out.printf("==============================================================\n"); 
         for (String file : file_name) {                                     // This loop iterates through each file name in the file_name array
             
             Record[] original = new FileReader().readFile("data/"+file);    // Read the file
@@ -38,7 +38,7 @@ public class Main {
             benchMark(record_array[1],2);                                 // Selection Sort
             benchMark(record_array[2],3);                                 // Merge Sort
             benchMark(record_array[3],4);                                 // Quick Sort
-            System.out.printf("=====================================================\n");                   
+            System.out.printf("==============================================================\n");                   
         }
 }
 
@@ -82,10 +82,23 @@ public class Main {
         long duration = endTime - startTime;                             // Calculate duration
         long stepCount = SortingAlgorithms.getStepCount();               // Get the step count
 
-        printResult(duration, stepCount, n);                             // Print the result
+        printResult(duration, stepCount, n, isSorted(records));          // Print the result
     }
 
-    public static void printResult(long duration, long stepCount, int algorithm) {
+    public static boolean isSorted(Record[] records) {
+        int first_Id = records[0].getIdNumber();                          // Get the first ID number
+        for (int i = 1; i < records.length; i ++) {
+            if (first_Id > records[i].getIdNumber()) {                    // If the first ID number is greater than the current ID number
+                System.out.println("The records are not sorted!");      // Print that the records are not sorted
+                return false;                                             // Return false at the first unsorted record
+            } else {
+                first_Id = records[i].getIdNumber();                      // Update the first ID number
+            }
+        }
+        return true;                                                      // If all records are sorted, return true                          
+    }
+
+    public static void printResult(long duration, long stepCount, int algorithm, boolean isSorted) {
         String algoName = "Error";                                        // Default value for error tracing
         switch(algorithm) {
             case 1: algoName = "Insertion Sort";    break;
@@ -93,6 +106,7 @@ public class Main {
             case 3: algoName = "Merge Sort";        break;
             case 4: algoName = "Quick Sort";        break;
         }
+        System.out.println((isSorted ? "YES \tThe records are sorted!" : "NO \tThe records are NOT sorted!"));
         System.out.printf("\t" + algoName + ": Duration = " + duration + " ms, Steps = " + stepCount + "\n");
    
     }
