@@ -16,7 +16,7 @@ public class Main {
             "random50000.txt",
             "random75000.txt",
             "random100000.txt",
-            "almostsorted100.txt",
+            "almostsorted.txt",
             "totallyreversed.txt"
          };
 
@@ -93,7 +93,7 @@ public class Main {
             case 3: algoName = "Merge Sort";        break;
             case 4: algoName = "Quick Sort";        break;
         }
-        System.out.println(algoName + ": Duration = " + duration + " ms, Steps = " + stepCount);
+        System.out.printf("\t" + algoName + ": Duration = " + duration + " ms, Steps = " + stepCount + "\n");
    
     }
 }
