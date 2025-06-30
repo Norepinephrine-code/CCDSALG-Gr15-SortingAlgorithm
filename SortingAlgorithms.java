@@ -27,13 +27,13 @@ public class SortingAlgorithms {
             int j = i - 1;
             incrementStep(1); // j assignment
             while (j >= 0 && arr[j].getIdNumber() > key.getIdNumber()) {
-                incrementStep(2); // j >= 0 + comparison
+                incrementStep(2); // j >= 0 + comparison, there is two since its "&&" operator
                 arr[j + 1] = arr[j];
                 incrementStep(1); // data movement
                 j--;
                 incrementStep(1); // j decrement
             }
-            incrementStep(1); // failed while comparison
+            incrementStep(2); // failed while comparison
             arr[j + 1] = key;
             incrementStep(1); // final assignment
         }
@@ -54,6 +54,7 @@ public class SortingAlgorithms {
                     incrementStep(1); // new min assignment
                 }
             }
+            incrementStep(1); // inner loop final check
             Record temp = arr[minIdx];
             arr[minIdx] = arr[i];
             arr[i] = temp;
@@ -90,11 +91,14 @@ public class SortingAlgorithms {
             L[i] = arr[p + i];
             incrementStep(1); // copying to L
         }
+        incrementStep(1); // loop final check
+        
         for (int j = 0; j < n2; j++) {
             incrementStep(1); // loop condition
             R[j] = arr[q + 1 + j];
             incrementStep(1); // copying to R
         }
+        incrementStep(1); // loop final check
 
         int i = 0, j = 0, k = p;
         incrementStep(3); // variable initializations
@@ -115,12 +119,14 @@ public class SortingAlgorithms {
             arr[k++] = L[i++];
             incrementStep(1); // assignment
         }
+        incrementStep(1); // final check for i < n1
 
         while (j < n2) {
             incrementStep(1); // loop condition
             arr[k++] = R[j++];
             incrementStep(1); // assignment
         }
+        incrementStep(1); // final check for j < n2
     }
 
     public void quickSort(Record[] arr, int low, int high) {
@@ -153,6 +159,7 @@ public class SortingAlgorithms {
                 incrementStep(3); // swap operations
             }
         }
+        incrementStep(1); // for loop final check
         Record temp = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp;
