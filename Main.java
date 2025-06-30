@@ -90,7 +90,6 @@ public class Main {
         int first_Id = records[0].getIdNumber();                          // Get the first ID number
         for (int i = 1; i < records.length; i ++) {
             if (first_Id > records[i].getIdNumber()) {                    // If the first ID number is greater than the current ID number
-                System.out.println("The records are not sorted!");      // Print that the records are not sorted
                 return false;                                             // Return false at the first unsorted record
             } else {
                 first_Id = records[i].getIdNumber();                      // Update the first ID number
