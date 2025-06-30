@@ -10,7 +10,7 @@ public class SortingAlgorithms {
         return stepCount;
     }
 
-    public static void resetStepCount() {
+    private static void resetStepCount() {
         stepCount = 0;
     }
 
