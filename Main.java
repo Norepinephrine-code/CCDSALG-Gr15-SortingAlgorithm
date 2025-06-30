@@ -8,6 +8,7 @@ public class Main {
          *      1. Read the files from the given path.
          *      2. Create 4 copies by storing them in a 2D array.
          *      3. Call the benchMark method for each sorting algorithm.
+         *      4. Print the result of each sorting algorithm.
          */
 
          String[] file_name = new String[] {

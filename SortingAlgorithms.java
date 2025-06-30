@@ -135,6 +135,9 @@ public class SortingAlgorithms {
         }
         incrementStep(1); // condition check of the 'if' below
         if (low < high) {
+        incrementStep(1); // condition check of the 'if' below
+             if (pi == low || pi == high) return;
+             incrementStep(1); // data assignment
             int pi = partition(arr, low, high);
             quickSort(arr, low, pi - 1);
             quickSort(arr, pi + 1, high);
