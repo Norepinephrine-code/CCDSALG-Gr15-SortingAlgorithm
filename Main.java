@@ -38,7 +38,7 @@ public class Main {
             benchMark(record_array[0],1);                                 // Insertion Sort
             benchMark(record_array[1],2);                                 // Selection Sort
             benchMark(record_array[2],3);                                 // Merge Sort
-            benchMark(record_array[3],4);                                 // Quick Sort
+            benchMark(record_array[3],4);                                 // Bubble Sort
             System.out.printf("==============================================================\n");                   
         }
 }
